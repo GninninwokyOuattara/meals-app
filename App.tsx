@@ -5,6 +5,8 @@ import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
+import MealsNavigator from "./navigation/MealsNavigator";
+
 export default function App() {
     const [dataLoaded, setDataLoaded] = useState(false);
 
@@ -25,14 +27,7 @@ export default function App() {
         );
     }
 
-    return (
-        <View style={styles.container}>
-            <Text style={styles.text}>
-                Open up App.tsx to start working on your app!
-            </Text>
-            <StatusBar style="auto" />
-        </View>
-    );
+    return <MealsNavigator />;
 }
 
 const styles = StyleSheet.create({
