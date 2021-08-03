@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import { CATEGORIES } from "../data/dummy-data";
+import COLORS from "../constants/Colors";
 
 // Item Components
 
@@ -24,14 +25,21 @@ const Item: React.FC<itemProps> = ({ title }) => (
 
 // CategoriesScreen Component
 
-type renderItemType = (item: { item: { title: string } }) => JSX.Element;
+type renderItemType = (item: {
+    item: { id: string; title: string };
+}) => JSX.Element;
 
 const CategoriesScreen = (props: any) => {
     const renderItem: renderItemType = ({ item }) => (
         <TouchableOpacity
             style={styles.gridItem}
             onPress={() =>
-                props.navigation.navigate({ routeName: "CategoryMeals" })
+                props.navigation.navigate({
+                    routeName: "CategoryMeals",
+                    params: {
+                        categoryId: item.id,
+                    },
+                })
             }
         >
             <View>
@@ -48,6 +56,13 @@ const CategoriesScreen = (props: any) => {
             keyExtractor={(item) => item.id}
         />
     );
+};
+
+CategoriesScreen.navigationOptions = {
+    headerTitle: "Categories",
+    headerStyle: {
+        backgroundColor: COLORS.accentColor,
+    },
 };
 
 const styles = StyleSheet.create({
