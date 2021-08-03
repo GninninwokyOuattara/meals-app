@@ -23,6 +23,17 @@ const CategoryMealsScreen = (props: any) => {
     );
 };
 
+CategoryMealsScreen.navigationOptions = (navigation: any) => {
+    const categoryId = navigation.navigation.getParam("categoryId");
+    const selectedCategory = CATEGORIES.find(
+        (category) => category.id === categoryId
+    );
+
+    return {
+        headerTitle: selectedCategory?.title,
+    };
+};
+
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
