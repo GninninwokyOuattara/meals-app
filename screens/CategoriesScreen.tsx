@@ -14,7 +14,17 @@ type renderItemType = (item: {
 
 const CategoriesScreen = (props: any) => {
     const renderItem: renderItemType = ({ item }) => (
-        <CategoryGridTile navigation={props.navigation} item={item} />
+        <CategoryGridTile
+            item={item}
+            onSelect={() =>
+                props.navigation.navigate({
+                    routeName: "CategoryMeals",
+                    params: {
+                        categoryId: item.id,
+                    },
+                })
+            }
+        />
     );
 
     return (

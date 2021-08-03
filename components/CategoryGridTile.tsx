@@ -7,22 +7,12 @@ type props = {
         title: string;
         color: string;
     };
-    navigation: any;
+    onSelect: () => void;
 };
 
 const CategoryGridTile: React.FC<props> = (props) => {
     return (
-        <TouchableOpacity
-            style={styles.gridItem}
-            onPress={() =>
-                props.navigation.navigate({
-                    routeName: "CategoryMeals",
-                    params: {
-                        categoryId: props.item.id,
-                    },
-                })
-            }
-        >
+        <TouchableOpacity style={styles.gridItem} onPress={props.onSelect}>
             <View>
                 <Text>{props.item.title}</Text>
             </View>
