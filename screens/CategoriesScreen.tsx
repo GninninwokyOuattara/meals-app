@@ -1,51 +1,20 @@
 import React from "react";
-import {
-    View,
-    Text,
-    StyleSheet,
-    Button,
-    FlatList,
-    TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, Button, FlatList } from "react-native";
 
 import { CATEGORIES } from "../data/dummy-data";
 import COLORS from "../constants/Colors";
 
-// Item Components
-
-type itemProps = {
-    title: any;
-};
-
-const Item: React.FC<itemProps> = ({ title }) => (
-    <View>
-        <Text>{title}</Text>
-    </View>
-);
+import CategoryGridTile from "../components/CategoryGridTile";
 
 // CategoriesScreen Component
 
 type renderItemType = (item: {
-    item: { id: string; title: string };
+    item: { id: string; title: string; color: string };
 }) => JSX.Element;
 
 const CategoriesScreen = (props: any) => {
     const renderItem: renderItemType = ({ item }) => (
-        <TouchableOpacity
-            style={styles.gridItem}
-            onPress={() =>
-                props.navigation.navigate({
-                    routeName: "CategoryMeals",
-                    params: {
-                        categoryId: item.id,
-                    },
-                })
-            }
-        >
-            <View>
-                <Item title={item.title} />
-            </View>
-        </TouchableOpacity>
+        <CategoryGridTile navigation={props.navigation} item={item} />
     );
 
     return (
@@ -70,11 +39,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-    },
-    gridItem: {
-        flex: 1,
-        margin: 15,
-        height: 150,
     },
 });
 
