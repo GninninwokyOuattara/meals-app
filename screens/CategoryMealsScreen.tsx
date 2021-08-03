@@ -15,7 +15,11 @@ const CategoryMealsScreen = (props: any) => {
         (meal) => meal.categoryIds.indexOf(categoryId) >= 0
     );
 
-    return <FlatList data={displayedMeals} renderItem={renderMealItem} />;
+    return (
+        <View style={styles.screen}>
+            <FlatList data={displayedMeals} renderItem={renderMealItem} />
+        </View>
+    );
 };
 
 CategoryMealsScreen.navigationOptions = (navigation: any) => {
@@ -34,6 +38,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        margin: 15,
     },
 });
 
