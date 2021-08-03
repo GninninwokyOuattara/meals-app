@@ -8,10 +8,10 @@ class Meal {
     duration: number;
     ingredients: string[];
     steps: string[];
-    isGlutenFree: string;
-    isVegan: string;
-    isVegetarian: string;
-    isLactoseFree: string;
+    isGlutenFree: boolean;
+    isVegan: boolean;
+    isVegetarian: boolean;
+    isLactoseFree: boolean;
 
     constructor(
         id: string,
