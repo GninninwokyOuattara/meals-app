@@ -1,16 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet, Button, FlatList } from "react-native";
+import MealItem from "../components/MealItem";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 import Meal from "../models/Meal";
 
 const CategoryMealsScreen = (props: any) => {
     const renderMealItem = (itemData: any) => {
-        console.log(itemData.item.title);
-        return (
-            <View>
-                <Text>{itemData.item.title}</Text>
-            </View>
-        );
+        return <MealItem {...itemData.item} />;
     };
 
     const categoryId = props.navigation.getParam("categoryId");
