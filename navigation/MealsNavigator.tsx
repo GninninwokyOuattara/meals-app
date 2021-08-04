@@ -16,6 +16,19 @@ const MealsNavigation = createStackNavigator({
     MealsDetails: MealsDetailsScreen,
 });
 
+const FavoriteNavigation = createStackNavigator(
+    {
+        Favorite: FavoriteMealsScreen,
+        Details: MealsDetailsScreen,
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: { backgroundColor: Colors.accentColor },
+            headerTitle: "Your Favorites !",
+        },
+    }
+);
+
 const BottomNavigation = createBottomTabNavigator(
     {
         Meals: {
@@ -33,7 +46,7 @@ const BottomNavigation = createBottomTabNavigator(
             },
         },
         Favorites: {
-            screen: FavoriteMealsScreen,
+            screen: FavoriteNavigation,
             navigationOptions: {
                 tabBarIcon: (tabInfo) => {
                     return (
