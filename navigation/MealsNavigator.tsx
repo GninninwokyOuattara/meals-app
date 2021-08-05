@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { color } from "react-native-reanimated";
 import { createAppContainer } from "react-navigation";
+import { createDrawerNavigator } from "react-navigation-drawer";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import Colors from "../constants/Colors";
@@ -9,6 +10,7 @@ import CategoriesScreen from "../screens/CategoriesScreen";
 import CategoryMealsScreen from "../screens/CategoryMealsScreen";
 import FavoriteMealsScreen from "../screens/FavoriteMealsScreen";
 import MealsDetailsScreen from "../screens/MealDetailsScreen";
+import FiltersScreen from "../screens/FiltersScreen";
 
 const MealsNavigation = createStackNavigator({
     Categories: CategoriesScreen,
@@ -28,6 +30,12 @@ const FavoriteNavigation = createStackNavigator(
         },
     }
 );
+
+const FiltersNavigation = createStackNavigator({
+    Filter: {
+        screen: FiltersScreen,
+    },
+});
 
 const BottomNavigation = createBottomTabNavigator(
     {
@@ -67,4 +75,20 @@ const BottomNavigation = createBottomTabNavigator(
     }
 );
 
-export default createAppContainer(BottomNavigation);
+const MainNavigation = createDrawerNavigator(
+    {
+        Meals: {
+            screen: BottomNavigation,
+        },
+        MealsFavs: {
+            screen: FavoriteMealsScreen,
+        },
+        Filters: FiltersNavigation,
+    },
+    {
+        drawerType: "slide",
+    }
+);
+
+// export default createAppContainer(BottomNavigation);
+export default createAppContainer(MainNavigation);
