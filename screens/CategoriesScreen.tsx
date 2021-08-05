@@ -5,6 +5,8 @@ import { CATEGORIES } from "../data/dummy-data";
 import COLORS from "../constants/Colors";
 
 import CategoryGridTile from "../components/CategoryGridTile";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import CustomHeaderButton from "../components/HeaderButton";
 
 // CategoriesScreen Component
 
@@ -37,11 +39,22 @@ const CategoriesScreen = (props: any) => {
     );
 };
 
-CategoriesScreen.navigationOptions = {
-    headerTitle: "Categories",
-    headerStyle: {
-        backgroundColor: COLORS.accentColor,
-    },
+CategoriesScreen.navigationOptions = (props: any) => {
+    return {
+        headerTitle: "Categories",
+        headerStyle: {
+            backgroundColor: COLORS.accentColor,
+        },
+        headerLeft: (
+            <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+                <Item
+                    title="drawer"
+                    iconName="ios-menu"
+                    onPress={() => props.navigation.toggleDrawer()}
+                />
+            </HeaderButtons>
+        ),
+    };
 };
 
 const styles = StyleSheet.create({
