@@ -87,6 +87,12 @@ const MainNavigation = createDrawerNavigator(
     },
     {
         drawerType: "slide",
+        contentOptions: {
+            activeTintColor: Colors.accentColor,
+            labelStyle: {
+                fontFamily: "OpenSans-Bold",
+            },
+        },
     }
 );
 
