@@ -5,6 +5,14 @@ import CustomHeaderButton from "../components/HeaderButton";
 import Colors from "../constants/Colors";
 import { MEALS } from "../data/dummy-data";
 
+const ListItem = (props: { item: string }) => {
+    return (
+        <View style={styles.listContainer}>
+            <Text>{props.item}</Text>
+        </View>
+    );
+};
+
 const MealsDetailsScreen = (props: any) => {
     const mealId = props.navigation.getParam("MealId");
     const selectedMeal = MEALS.find((meal) => meal.id === mealId);
@@ -26,7 +34,7 @@ const MealsDetailsScreen = (props: any) => {
                 <Text style={styles.zoneHeader}>INGREDIENTS</Text>
                 <View>
                     {selectedMeal?.ingredients.map((ingredient, idx) => {
-                        return <Text key={idx}>{ingredient}</Text>;
+                        return <ListItem key={idx} item={ingredient} />;
                     })}
                 </View>
             </View>
@@ -34,7 +42,7 @@ const MealsDetailsScreen = (props: any) => {
                 <Text style={styles.zoneHeader}>STEPS</Text>
                 <View>
                     {selectedMeal?.steps.map((step, idx) => {
-                        return <Text key={idx}>{step}</Text>;
+                        return <ListItem key={idx} item={step} />;
                     })}
                 </View>
             </View>
@@ -91,6 +99,13 @@ const styles = StyleSheet.create({
         color: Colors.accentColor,
         fontSize: 20,
         alignSelf: "center",
+    },
+    listContainer: {
+        padding: 10,
+        borderWidth: 2,
+        borderColor: "#ccc",
+        margin: 5,
+        fontFamily: "OpenSans-Regular",
     },
 });
 
