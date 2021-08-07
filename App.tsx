@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
     meals: mealsReducer,
 });
 
-const store = createStore(rootReducer);
+export const store = createStore(rootReducer);
 
 export default function App() {
     const [dataLoaded, setDataLoaded] = useState(false);
