@@ -7,8 +7,17 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
 import MealsNavigator from "./navigation/MealsNavigator";
+import { combineReducers, createStore } from "redux";
+import { Provider } from "react-redux";
+import mealsReducer from "./store/reducers/meals";
 
 enableScreens();
+
+const rootReducer = combineReducers({
+    meals: mealsReducer,
+});
+
+const store = createStore(rootReducer);
 
 export default function App() {
     const [dataLoaded, setDataLoaded] = useState(false);
@@ -30,7 +39,11 @@ export default function App() {
         );
     }
 
-    return <MealsNavigator />;
+    return (
+        <Provider store={store}>
+            <MealsNavigator />
+        </Provider>
+    );
 }
 
 const styles = StyleSheet.create({
