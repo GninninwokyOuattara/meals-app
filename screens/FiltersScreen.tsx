@@ -23,7 +23,7 @@ const Filter = (props: {
 
 const FiltersScreen = (props: any) => {
     const [isGlutenFree, setIsGutenFree] = useState(false);
-    const [isLactoreFree, setIsLactoseFree] = useState(false);
+    const [isLactoseFree, setIsLactoseFree] = useState(false);
     const [isVegan, setIsVegan] = useState(false);
     const [isVegeratian, setIsVegetarian] = useState(false);
 
@@ -32,13 +32,13 @@ const FiltersScreen = (props: any) => {
     const saveFilters = useCallback(() => {
         const filters = {
             isGlutenFree,
-            isLactoreFree,
+            isLactoseFree,
             isVegan,
             isVegeratian,
         };
         console.log("saved", filters);
         return filters;
-    }, [isGlutenFree, isLactoreFree, isVegan, isVegeratian]);
+    }, [isGlutenFree, isLactoseFree, isVegan, isVegeratian]);
 
     useEffect(() => {
         navigation.setParams({ save: saveFilters });
@@ -64,7 +64,7 @@ const FiltersScreen = (props: any) => {
             />
             <Filter
                 title={"Lactore-Free"}
-                state={isLactoreFree}
+                state={isLactoseFree}
                 setStateFunction={setIsLactoseFree}
             />
             <Filter
