@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import CustomHeaderButton from "../components/HeaderButton";
 import Colors from "../constants/Colors";
 import { MEALS } from "../data/dummy-data";
+import Meal from "../models/Meal";
 
 import { RootState } from "../types";
 
@@ -19,7 +20,7 @@ const ListItem = (props: { item: string }) => {
 const MealsDetailsScreen = (props: any) => {
     const mealId = props.navigation.getParam("MealId");
     const meals = useSelector((state: RootState) => state.meals.meals);
-    const selectedMeal = meals.find((meal) => meal.id === mealId);
+    const selectedMeal = meals.find((meal: Meal) => meal.id === mealId);
 
     useEffect(() => {
         props.navigation.setParams({ mealTitle: selectedMeal?.title });
@@ -41,15 +42,17 @@ const MealsDetailsScreen = (props: any) => {
             <View style={styles.detailZone}>
                 <Text style={styles.zoneHeader}>INGREDIENTS</Text>
                 <View>
-                    {selectedMeal?.ingredients.map((ingredient, idx) => {
-                        return <ListItem key={idx} item={ingredient} />;
-                    })}
+                    {selectedMeal?.ingredients.map(
+                        (ingredient: string, idx: number) => {
+                            return <ListItem key={idx} item={ingredient} />;
+                        }
+                    )}
                 </View>
             </View>
             <View style={styles.detailZone}>
                 <Text style={styles.zoneHeader}>STEPS</Text>
                 <View>
-                    {selectedMeal?.steps.map((step, idx) => {
+                    {selectedMeal?.steps.map((step: string, idx: number) => {
                         return <ListItem key={idx} item={step} />;
                     })}
                 </View>
@@ -59,7 +62,6 @@ const MealsDetailsScreen = (props: any) => {
 };
 
 MealsDetailsScreen.navigationOptions = (props: any) => {
-
     return {
         headerTitle: props.navigation.getParam("mealTitle"),
         headerRight: () => (
