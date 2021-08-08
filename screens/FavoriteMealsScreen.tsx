@@ -6,8 +6,6 @@ import MealList from "../components/MealList";
 import { RootState } from "../types";
 
 const FavoriteMealsScreen = (props: any) => {
-    // const favMeal = MEALS.filter((meal) => meal.id == "m1" || meal.id == "m2");
-
     const favMeals = useSelector(
         (state: RootState) => state.meals.favoriteMeals
     );

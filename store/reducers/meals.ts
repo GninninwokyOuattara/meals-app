@@ -39,7 +39,6 @@ const mealsReducer = (state = initialState, actions: any) => {
         default:
             return state;
     }
-    return state;
 };
 
 export default mealsReducer;
