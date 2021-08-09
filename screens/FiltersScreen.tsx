@@ -4,7 +4,7 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
 import COLORS from "../constants/Colors";
 import { useDispatch } from "react-redux";
-import { toggleFilter } from "../store/actions/meals";
+import { setFilters } from "../store/actions/meals";
 
 const Filter = (props: {
     title: string;
@@ -39,7 +39,7 @@ const FiltersScreen = (props: any) => {
             isVegetarian,
         };
         console.log("saved", filters);
-        return dispatch(toggleFilter(filters));
+        return dispatch(setFilters(filters));
     }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
 
     useEffect(() => {

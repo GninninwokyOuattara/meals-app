@@ -6,8 +6,8 @@ export const toggleFavorite = (id: string) => {
     return { type: TOGGLE_FAVORITE, mealId: id };
 };
 
-export const TOGGLE_FILTER = "TOGGLE_FILTER";
+export const SET_FILTERS = "SET_FILTERS";
 
-export const toggleFilter = (filters: Filter) => {
-    return { type: TOGGLE_FILTER, filters };
+export const setFilters = (filters: Filter) => {
+    return { type: SET_FILTERS, filters };
 };

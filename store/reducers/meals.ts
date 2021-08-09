@@ -1,6 +1,6 @@
 import { MEALS } from "../../data/dummy-data";
 import Meal from "../../models/Meal";
-import { TOGGLE_FAVORITE, TOGGLE_FILTER } from "../actions/meals";
+import { TOGGLE_FAVORITE, SET_FILTERS } from "../actions/meals";
 import { FilterName } from "../../types";
 
 const initialState: {
@@ -34,7 +34,7 @@ const mealsReducer = (state = initialState, actions: any) => {
                     };
                 }
             }
-        case TOGGLE_FILTER:
+        case SET_FILTERS:
             let filtersToApply = [];
             for (let key in actions.filters) {
                 if (actions.filters[key] === true) {
