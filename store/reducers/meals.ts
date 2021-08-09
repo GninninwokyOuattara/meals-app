@@ -1,7 +1,7 @@
 import { MEALS } from "../../data/dummy-data";
 import Meal from "../../models/Meal";
-import { TOGGLE_FAVORITE } from "../actions/meals";
-import { Reducer } from "redux";
+import { TOGGLE_FAVORITE, TOGGLE_FILTER } from "../actions/meals";
+import { FilterName } from "../../types";
 
 const initialState: {
     meals: Meal[];
@@ -22,7 +22,6 @@ const mealsReducer = (state = initialState, actions: any) => {
             if (idx >= 0) {
                 let updatedFav = [...state.favoriteMeals];
                 updatedFav.splice(idx, 1);
-                return { ...state, favoriteMeals: updatedFav };
             } else {
                 let meal = state.meals.find(
                     (meal: Meal) => meal.id === actions.mealId
@@ -35,6 +34,25 @@ const mealsReducer = (state = initialState, actions: any) => {
                     };
                 }
             }
+        case TOGGLE_FILTER:
+            let filtersToApply = [];
+            for (let key in actions.filters) {
+                if (actions.filters[key] === true) {
+                    filtersToApply.push(key);
+                }
+            }
+
+            let data = [...state.meals];
+            if (filtersToApply) {
+                for (let filter of filtersToApply as FilterName[]) {
+                    data = data.filter((meal) => meal[filter] !== true);
+                }
+            }
+
+            return {
+                ...state,
+                filteredMeals: data,
+            };
 
         default:
             return state;
