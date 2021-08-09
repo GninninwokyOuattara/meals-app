@@ -45,10 +45,9 @@ const mealsReducer = (state = initialState, actions: any) => {
             let data = [...state.meals];
             if (filtersToApply) {
                 for (let filter of filtersToApply as FilterName[]) {
-                    data = data.filter((meal) => meal[filter] !== true);
+                    data = data.filter((meal) => meal[filter] === true);
                 }
             }
-
             return {
                 ...state,
                 filteredMeals: data,
