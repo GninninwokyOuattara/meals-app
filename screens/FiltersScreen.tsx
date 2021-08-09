@@ -25,7 +25,7 @@ const FiltersScreen = (props: any) => {
     const [isGlutenFree, setIsGutenFree] = useState(false);
     const [isLactoseFree, setIsLactoseFree] = useState(false);
     const [isVegan, setIsVegan] = useState(false);
-    const [isVegeratian, setIsVegetarian] = useState(false);
+    const [isVegetarian, setIsVegetarian] = useState(false);
 
     const { navigation } = props;
 
@@ -34,11 +34,11 @@ const FiltersScreen = (props: any) => {
             isGlutenFree,
             isLactoseFree,
             isVegan,
-            isVegeratian,
+            isVegetarian,
         };
         console.log("saved", filters);
         return filters;
-    }, [isGlutenFree, isLactoseFree, isVegan, isVegeratian]);
+    }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
 
     useEffect(() => {
         navigation.setParams({ save: saveFilters });
@@ -74,7 +74,7 @@ const FiltersScreen = (props: any) => {
             />
             <Filter
                 title={"Vegatarian"}
-                state={isVegeratian}
+                state={isVegetarian}
                 setStateFunction={setIsVegetarian}
             />
         </View>
