@@ -9,7 +9,7 @@ import { RootState } from "../types";
 const CategoryMealsScreen = (props: any) => {
     const categoryId = props.navigation.getParam("categoryId");
     const meals = useSelector((state: RootState) => {
-        return state.meals.meals;
+        return state.meals.filteredMeals;
     });
     const displayedMeals = meals.filter(
         (meal) => meal.categoryIds.indexOf(categoryId) >= 0
